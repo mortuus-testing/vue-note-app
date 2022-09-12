@@ -1,4 +1,9 @@
+const cors = require('cors')
 const app = require('express')()
+
+app.use(cors({
+    origin: '*'
+}))
 
 app.get('/api/notes', (req, res) => {
     // This cache-control is needed by vercel.
@@ -18,5 +23,5 @@ app.get('/api/notes', (req, res) => {
         ]
     })
 })
-
-module.exports = app
+app.listen('3000', () => {console.log('API Server running on port 3000')})
+// module.exports = app
