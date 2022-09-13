@@ -2,8 +2,6 @@
 import { useStore } from '../stores/store'
 import { onMounted, ref} from 'vue'
 import { useRouter } from 'vue-router'
-import AppFooter from '../components/AppFooter.vue'
-import SearchBar from '../components/SearchBar.vue'
 
 const store = useStore()
 const router = useRouter()
@@ -11,26 +9,30 @@ const router = useRouter()
 onMounted(() => {
     if (store.getNotes._rawValue.length == 0) {
         store.initNotes()
-        // router.push('/')
     }
 })
 </script>
-
 <script>
+import AppFooter from '../components/AppFooter.vue'
+import SearchBar from '../components/SearchBar.vue'
 export default {
+    components: {
+        AppFooter,
+        SearchBar
+    },
     methods: {
-        toggleSearchBar() {
-            alert('view toggle')
+        aaa() {
             this.$refs.searchBar.toggle()
         }
     }
 }
 </script>
 
+
 <template>
     <div class="view-app">
         <SearchBar ref="searchBar" />
         <h1>APP {{store.getNotes}}</h1>
-        <AppFooter @toggle-search-bar="this.toggleSearchBar()"/>
+        <AppFooter @onToggle="aaa()"/>
     </div>
 </template>

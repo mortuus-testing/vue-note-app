@@ -13,6 +13,11 @@ export default {
     },
     mounted() {window.addEventListener('resize', () => {this.mobileViewPortHeight = document.documentElement.scrollHeight})},
     unmounted() {window.removeEventListener('resize', () => {this.mobileViewPortHeight = document.documentElement.scrollHeight})},
+    methods: {
+        toggleSearch() {
+            this.$emit('onToggle')
+        }
+    }
 }
 </script>
 
@@ -28,8 +33,8 @@ export default {
             <div class="footer-item">
                 <svg v-html="feather.icons.settings.toSvg()"></svg>
             </div>
-            <!-- <div class="footer-item" @click="this.$emit('toggle-search-bar')"> -->
-                <div class="footer-item" @click="this.$el.$parent">
+            <div class="footer-item" @click="this.toggleSearch">
+                <!-- <div class="footer-item" @click=""> -->
                 <svg v-html="feather.icons.search.toSvg()"></svg>
             </div>
             <div class="footer-item item-create">

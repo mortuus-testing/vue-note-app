@@ -13,9 +13,9 @@ export default {
     },
     methods: {
         toggle() {
-            alert('component-toggled')
+            // alert('component-toggled')
             this.isShowed = !this.isShowed
-            // if (this.isShowed) {this.$el.querySelector('.search-input').focus()}
+            if (this.isShowed) {this.$el.querySelector('.search-input').focus()}
         }
     }
 }
