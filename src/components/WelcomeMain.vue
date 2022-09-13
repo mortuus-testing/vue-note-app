@@ -1,6 +1,11 @@
 <script>
 export default {
-    name: 'WelcomeMain'
+    name: 'WelcomeMain',
+    data() {
+        return {
+            loadingMsg: 'Searching The Orion Constellation...'
+        }
+    }
 }
 </script>
 
@@ -15,6 +20,7 @@ export default {
                 </ul>
             </div>
             <div class="btn-container">
+                <div class="loading-msg">{{loadingMsg}}</div>
                 <button class="btn-next">Continue</button>
             </div>
         </div>
@@ -75,6 +81,18 @@ export default {
         display: flex;
         justify-content: center;
         align-items: center;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+    .loading-msg {
+        height: 40px;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #5B8;
+        font-size: 15px;
     }
     .btn-next {
         padding: 10px 30px;
