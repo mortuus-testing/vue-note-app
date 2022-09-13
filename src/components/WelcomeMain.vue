@@ -1,9 +1,34 @@
 <script>
+import { useStore } from '../stores/store'
+
 export default {
     name: 'WelcomeMain',
     data() {
         return {
-            loadingMsg: 'Searching The Orion Constellation...'
+            loadingMsg: '',
+            isLoading: false
+        }
+    },
+    methods: {
+        enterApp() {
+            const store = useStore()
+            this.$el.querySelector('.loading-msg').style.color = '#5C8'
+            this.loadingMsg = 'Fething data...'
+            this.isLoading = true
+            store.initNotes().then(() => {
+                setTimeout(() => {
+                    this.isLoading = false
+                    this.$router.push('/app')
+                }, 1000)
+            }).catch((err) => {
+                // Add delay to the error message.
+                setTimeout(() => {
+                    console.log('DEBUG (Error): ', err)
+                    this.$el.querySelector('.loading-msg').style.color = 'red'
+                    this.loadingMsg = 'Failed to load resources.'
+                    this.isLoading = false
+                }, 1000)
+            })
         }
     }
 }
@@ -21,7 +46,10 @@ export default {
             </div>
             <div class="btn-container">
                 <div class="loading-msg">{{loadingMsg}}</div>
-                <button class="btn-next">Continue</button>
+                <button class="btn-next" @click="enterApp()">
+                    <div class="loader" v-if="isLoading"></div>
+                    <span v-if="!isLoading">Continue</span>
+                </button>
             </div>
         </div>
     </div>
@@ -95,7 +123,12 @@ export default {
         font-size: 15px;
     }
     .btn-next {
-        padding: 10px 30px;
+        width: 120px;
+        height: 40px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 18px;
         font-weight: bold;
         border: 2px solid #333;
         border-radius: 5px;
@@ -104,5 +137,14 @@ export default {
     .btn-next:hover {
         color: white;
         background-color: #333;
-    } 
+    }
+    .loader {
+        width: 25px;
+        height: 25px;
+        border: 2px solid #DDD;
+        border-top: 2px solid #5B8;
+        border-radius: 50%;
+        animation: loading 1s linear infinite;
+    }
+    @keyframes loading {from {transform: rotate(0deg);} to {transform: rotate(360deg);}}
 </style>

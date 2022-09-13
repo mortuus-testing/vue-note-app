@@ -22,7 +22,6 @@ export default {
 
 <template>
     <div class="component-welcome-footer" :style="`top:${mobileViewPortHeight - 60}px`">
-    <!-- <div class="component-welcome-footer"> -->
         <div class="author">
             by <span class="author-name">RiENX</span>
         </div>
