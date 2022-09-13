@@ -88,5 +88,4 @@ export default {
     .social-item:hover svg {
         color: #5C8;
     }
-
 </style>

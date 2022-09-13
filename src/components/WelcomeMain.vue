@@ -25,7 +25,7 @@ export default {
                 setTimeout(() => {
                     console.log('DEBUG (Error): ', err)
                     this.$el.querySelector('.loading-msg').style.color = 'red'
-                    this.loadingMsg = 'Failed to load resources.'
+                    this.loadingMsg = 'Failed to load resources. ERR = ' + err
                     this.isLoading = false
                 }, 1000)
             })
@@ -133,6 +133,7 @@ export default {
         border: 2px solid #333;
         border-radius: 5px;
         background-color: white;
+        color: #333;
     }
     .btn-next:hover {
         color: white;
@@ -147,4 +148,10 @@ export default {
         animation: loading 1s linear infinite;
     }
     @keyframes loading {from {transform: rotate(0deg);} to {transform: rotate(360deg);}}
+    @media screen and (max-width: 800px) {
+        .btn-next:hover {
+            color: #333;
+            background: white;
+        }
+    }
 </style>

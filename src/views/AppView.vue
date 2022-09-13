@@ -19,6 +19,7 @@ onMounted(() => {
 export default {
     methods: {
         toggleSearchBar() {
+            alert('view toggle')
             this.$refs.searchBar.toggle()
         }
     }
