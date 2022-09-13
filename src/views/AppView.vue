@@ -10,7 +10,8 @@ const router = useRouter()
 
 onMounted(() => {
     if (store.getNotes._rawValue.length == 0) {
-        router.push('/')
+        store.initNotes()
+        // router.push('/')
     }
 })
 </script>
@@ -30,6 +31,6 @@ export default {
     <div class="view-app">
         <SearchBar ref="searchBar" />
         <h1>APP {{store.getNotes}}</h1>
-        <AppFooter @toggleSearchBar="this.toggleSearchBar()"/>
+        <AppFooter @toggle-search-bar="this.toggleSearchBar()"/>
     </div>
 </template>

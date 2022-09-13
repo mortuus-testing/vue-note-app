@@ -28,7 +28,7 @@ export default {
             <div class="footer-item">
                 <svg v-html="feather.icons.settings.toSvg()"></svg>
             </div>
-            <div class="footer-item" @click="this.$emit('toggleSearchBar')">
+            <div class="footer-item" @click="this.$emit('toggle-search-bar')">
                 <svg v-html="feather.icons.search.toSvg()"></svg>
             </div>
             <div class="footer-item item-create">
