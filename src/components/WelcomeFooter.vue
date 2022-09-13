@@ -1,15 +1,28 @@
 <script setup>
     import feather from 'feather-icons'
+    import { useStore } from '../stores/store'
 </script>
 
 <script>
 export default {
-    name: 'WelcomeFooter'
+    name: 'WelcomeFooter',
+    data() {
+        return {
+            mobileViewPortHeight: document.documentElement.scrollHeight
+        }
+    },
+    mounted() {
+        window.addEventListener('resize', () => {this.mobileViewPortHeight = document.documentElement.scrollHeight})
+    },
+    unmounted() {
+        window.removeEventListener('resize', () => {this.mobileViewPortHeight = document.documentElement.scrollHeight})
+    }
 }
 </script>
 
 <template>
-    <div class="component-welcome-footer">
+    <div class="component-welcome-footer" :style="`top:${mobileViewPortHeight - 60}px`">
+    <!-- <div class="component-welcome-footer"> -->
         <div class="author">
             by <span class="author-name">RiENX</span>
         </div>
@@ -32,7 +45,7 @@ export default {
         height: 60px;
         width: 100vw;
         position: fixed;
-        top: calc(100vh - 60px);
+        /* top: calc(100vh - 60px); */
         left: 0;
         background-color: #5C8;
         display: flex;

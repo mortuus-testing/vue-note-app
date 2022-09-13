@@ -6,5 +6,5 @@ useStore().initNotes()
 </script>
 
 <template>
-  <RouterView />
+    <RouterView />
 </template>

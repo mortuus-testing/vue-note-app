@@ -2,6 +2,8 @@ import { ref, computed, toRaw } from 'vue'
 import { defineStore } from 'pinia'
 
 export const useStore = defineStore('store', () => {
+
+  // Notes
   const notes = ref([])
   const getNotes = computed(notes)
   async function initNotes() {
@@ -10,5 +12,5 @@ export const useStore = defineStore('store', () => {
     notes.value.push(data.data[0])
   }
 
-  return { notes, getNotes, initNotes }
+  return { notes, getNotes, initNotes}
 })
